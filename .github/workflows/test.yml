@@ -15,9 +15,14 @@ jobs:
         id: node-version
         uses: ./
 
+      - name: get-npm-version
+        id: project-version
+        uses: martinbeentjes/npm-get-version-action@master
+
       - name: Print version
         run: >-
           echo ${{ steps.node-version.outputs.version }}
           echo ${{ steps.node-version.outputs.major }}
           echo ${{ steps.node-version.outputs.minor }}
           echo ${{ steps.node-version.outputs.patch }}
+          echo ${{ steps.project-version.outputs.current-version}}
