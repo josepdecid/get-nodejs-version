@@ -1,1 +1,1 @@
-# get-node-version-action
+# Get NodeJS version Action

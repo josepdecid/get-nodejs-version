@@ -1,0 +1,29 @@
+{
+  "name": "get-nodejs-version-action",
+  "version": "0.0.1",
+  "engines": {
+    "node": "12.13.0"
+  },
+  "description": "GitHub action to retrieve the NodeJS version as defined in `package.json` > `engines` > `node`",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:josepdecid/get-nodejs-version-action.git"
+  },
+  "bugs": {
+    "url": "https://github.com/josepdecid/get-nodejs-version-action/issues"
+  },
+  "homepage": "https://github.com/josepdecid/get-nodejs-version-action#readme",
+  "keywords": [
+    "github",
+    "actions",
+    "nodejs",
+    "version"
+  ],
+  "author": "Josep de Cid <josep.de.cid@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@actions/core": "^1.6.0"
+  }
+}

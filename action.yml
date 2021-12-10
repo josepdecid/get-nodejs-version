@@ -1,0 +1,8 @@
+name: 'Get NodeJS version'
+description: 'Get NodeJS version as defined in `package.json` > `engines` > `node`'
+outputs:
+  version:
+    description: 'NodeJS version'
+runs:
+  using: 'node12'
+  main: 'index.js'
