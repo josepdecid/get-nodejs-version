@@ -19,10 +19,8 @@ jobs:
         id: project-version
         uses: martinbeentjes/npm-get-version-action@master
 
-      - name: Print version
-        run: >-
-          ${{ steps.node-version.outputs.version }} \n
-          ${{ steps.node-version.outputs.major }} \n
-          ${{ steps.node-version.outputs.minor }} \n
-          ${{ steps.node-version.outputs.patch }} \n
-          ${{ steps.project-version.outputs.current-version}}
+      - name: Print NodeJS version
+        run: echo ${{ steps.node-version.outputs.version }}
+
+      - name: Print project version
+        run: echo ${{ steps.project-version.outputs.current-version}}
