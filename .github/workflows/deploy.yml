@@ -1,0 +1,37 @@
+name: 'pre-release'
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  pre-release:
+    name: 'Pre Release'
+    runs-on: 'ubuntu-latest'
+
+    steps:
+      - name: Read node from package.json
+        uses: josepdecid/get-nodejs-version-action@v0.0.3-alpha
+        id: node-version
+
+      - name: Set up NodeJS version
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ steps.node-version.outputs.version }}
+
+      - name: Install dependencies
+        run: yarn install --dev
+
+      - name: Run tests with Jest
+        run: yarn test
+
+      - name: Build and package
+        run: yarn run build && yarn run package
+
+      - uses: 'marvinpinto/action-automatic-releases@latest'
+        with:
+          title: 'Testing auto-deploy build'
+          repo_token: '${{ secrets.DEPLOY_GITHUB_TOKEN }}'
+          automatic_release_tag: 'latest'
+          prerelease: true
