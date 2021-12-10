@@ -1,4 +1,6 @@
 const core = require('@actions/core');
+const fs = require('fs');
+const join = require('path').join;
 
 try {
     const path = core.getInput('path');
