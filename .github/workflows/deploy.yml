@@ -11,6 +11,9 @@ jobs:
     runs-on: 'ubuntu-latest'
 
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
       - name: Read node from package.json
         uses: josepdecid/get-nodejs-version-action@v0.1.1-beta
         id: node-version
