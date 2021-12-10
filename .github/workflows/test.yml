@@ -16,4 +16,8 @@ jobs:
         uses: ./
 
       - name: Print version
-        run: echo ${{ steps.node-version.outputs.version }}
+        run: >-
+          echo ${{ steps.node-version.outputs.version }}
+          echo ${{ steps.node-version.outputs.major }}
+          echo ${{ steps.node-version.outputs.minor }}
+          echo ${{ steps.node-version.outputs.patch }}

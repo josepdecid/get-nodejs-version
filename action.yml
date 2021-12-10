@@ -3,6 +3,12 @@ description: 'Get NodeJS version as defined in `package.json` > `engines` > `nod
 outputs:
   version:
     description: 'NodeJS version'
+  major:
+    description: 'Major version tag'
+  minor:
+    description: 'Minor version tag'
+  patch:
+    description: 'Patch version tag'
 runs:
   using: 'node12'
   main: 'index.js'
