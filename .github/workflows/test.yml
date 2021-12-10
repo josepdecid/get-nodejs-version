@@ -17,10 +17,10 @@ jobs:
 
       - name: get-npm-version
         id: project-version
-        uses: martinbeentjes/npm-get-version-action@master
+        uses: Saionaro/extract-package-version@v1.0.6
 
       - name: Print NodeJS version
         run: echo ${{ steps.node-version.outputs.version }}
 
       - name: Print project version
-        run: echo ${{ steps.project-version.outputs.current-version}}
+        run: echo ${{ steps.project-version.outputs.version }}
