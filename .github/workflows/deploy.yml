@@ -18,6 +18,10 @@ jobs:
         uses: josepdecid/get-nodejs-version-action@v0.1.1-beta
         id: node-version
 
+      - name: get-npm-version
+        id: project-version
+        uses: Saionaro/extract-package-version@v1.0.6
+
       - name: Set up NodeJS version
         uses: actions/setup-node@v2
         with:
@@ -36,5 +40,5 @@ jobs:
         with:
           title: 'Testing auto-deploy build'
           repo_token: '${{ secrets.DEPLOY_GITHUB_TOKEN }}'
-          automatic_release_tag: 'latest'
+          automatic_release_tag: '${{ steps.project-version.outputs.version }}'
           prerelease: true
