@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Read node from package.json
-        uses: josepdecid/get-nodejs-version-action@v0.0.3-alpha
+        uses: josepdecid/get-nodejs-version-action@v0.1.1-beta
         id: node-version
 
       - name: Set up NodeJS version
