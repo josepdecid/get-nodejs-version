@@ -1,46 +1,28 @@
 require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 496:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ 452:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core_1 = __nccwpck_require__(186);
-const fs = __importStar(__nccwpck_require__(147));
+const fs_1 = __nccwpck_require__(147);
 const path_1 = __nccwpck_require__(17);
 // TODO: Temp fix, set type safe for the representation of the package.json
-function readPackageJson(path) {
+function readPackageJson() {
+    const path = (0, core_1.getInput)('path');
     const packagePath = (0, path_1.join)(path, 'package.json');
-    if (!fs.existsSync(packagePath)) {
+    if (!(0, fs_1.existsSync)(packagePath)) {
         (0, core_1.setFailed)('Unable to find `package.json` file...');
     }
     else {
-        (0, core_1.debug)(`Reading "package.json" file from "${path}".`);
+        (0, core_1.debug)(`Reading "package.json" file from "${path || '.'}".`);
     }
     let packageJson;
     try {
-        const packageJsonRaw = fs.readFileSync(packagePath).toString();
+        const packageJsonRaw = (0, fs_1.readFileSync)(packagePath).toString();
         packageJson = JSON.parse(packageJsonRaw);
     }
     catch (error) {
@@ -48,7 +30,93 @@ function readPackageJson(path) {
     }
     return packageJson;
 }
-function extractVersionDetails(version) {
+exports["default"] = readPackageJson;
+
+
+/***/ }),
+
+/***/ 496:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const input_reader_1 = __importDefault(__nccwpck_require__(452));
+const output_writer_1 = __nccwpck_require__(438);
+const version_extraction_1 = __nccwpck_require__(72);
+const run = () => {
+    const packageJson = (0, input_reader_1.default)();
+    const information = (0, version_extraction_1.extractVersionInformation)(packageJson);
+    (0, output_writer_1.writeOutput)(information);
+};
+run();
+
+
+/***/ }),
+
+/***/ 438:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.writeOutput = void 0;
+const output_writer_1 = __importDefault(__nccwpck_require__(793));
+exports.writeOutput = output_writer_1.default;
+
+
+/***/ }),
+
+/***/ 793:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const core_1 = __nccwpck_require__(186);
+const writeOutput = (information) => {
+    for (const [key, value] of Object.entries(information)) {
+        if (value !== null) {
+            (0, core_1.setOutput)(key, value);
+        }
+    }
+};
+exports["default"] = writeOutput;
+
+
+/***/ }),
+
+/***/ 72:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.extractVersionInformation = void 0;
+const version_extraction_1 = __importDefault(__nccwpck_require__(24));
+exports.extractVersionInformation = version_extraction_1.default;
+
+
+/***/ }),
+
+/***/ 24:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const core_1 = __nccwpck_require__(186);
+const extractVersionInformation = (packageJson) => {
+    const version = packageJson.engines.node;
     (0, core_1.debug)(`Node version from package.engines.node: ${version}`);
     const subVersions = version.split('.');
     return {
@@ -57,19 +125,8 @@ function extractVersionDetails(version) {
         minor: subVersions[1],
         patch: subVersions[2]
     };
-}
-function run() {
-    const path = (0, core_1.getInput)('path');
-    const packageJson = readPackageJson(path);
-    const nodeVersion = packageJson.engines.node;
-    const details = extractVersionDetails(nodeVersion);
-    for (const [key, value] of Object.entries(details)) {
-        if (value !== null) {
-            (0, core_1.setOutput)(key, value);
-        }
-    }
-}
-run();
+};
+exports["default"] = extractVersionInformation;
 
 
 /***/ }),
