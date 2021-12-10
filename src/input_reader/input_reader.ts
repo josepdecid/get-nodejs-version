@@ -1,10 +1,10 @@
 import { debug, getInput, setFailed } from '@actions/core';
 import { existsSync, readFileSync } from 'fs';
+import { PackageJson } from 'package-json-type';
 import { join } from 'path';
-import { IPackageJSON } from '../main';
 
 // TODO: Temp fix, set type safe for the representation of the package.json
-function readPackageJson(): IPackageJSON {
+function readPackageJson(): PackageJson {
   const path = getInput('path');
   const packagePath = join(path, 'package.json');
 

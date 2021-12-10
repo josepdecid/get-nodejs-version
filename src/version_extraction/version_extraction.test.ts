@@ -28,14 +28,14 @@ describe('When extracting the information from a explicit version', () => {
   });
 
   it('should return the first part as the major', () => {
-    expect(versionInfo.major).toEqual('17');
+    expect(versionInfo.major).toEqual(17);
   });
 
   it('should return the middle part as the minor', () => {
-    expect(versionInfo.minor).toEqual('18');
+    expect(versionInfo.minor).toEqual(18);
   });
 
   it('should return the last part as the patch', () => {
-    expect(versionInfo.patch).toEqual('9');
+    expect(versionInfo.patch).toEqual(9);
   });
 });

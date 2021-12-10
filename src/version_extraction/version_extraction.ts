@@ -1,10 +1,12 @@
 import { debug } from '@actions/core';
-import { IPackageJSON } from '../main';
+import { PackageJson } from 'package-json-type';
+import { VersionInformation } from 'version_information';
 
 const extractVersionInformation = (
-  packageJson: IPackageJSON
-): { [id: string]: string } => {
+  packageJson: PackageJson
+): VersionInformation => {
   const version = packageJson.engines.node;
+
   debug(`Node version from package.engines.node: ${version}`);
 
   const subVersions = version.split('.');
@@ -12,9 +14,9 @@ const extractVersionInformation = (
   return {
     version: version,
 
-    major: subVersions[0],
-    minor: subVersions[1],
-    patch: subVersions[2]
+    major: parseInt(subVersions[0]),
+    minor: parseInt(subVersions[1]),
+    patch: parseInt(subVersions[2])
   };
 };
 
