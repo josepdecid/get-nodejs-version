@@ -21,8 +21,8 @@ jobs:
 
       - name: Print version
         run: >-
-          echo ${{ steps.node-version.outputs.version }}
-          echo ${{ steps.node-version.outputs.major }}
-          echo ${{ steps.node-version.outputs.minor }}
-          echo ${{ steps.node-version.outputs.patch }}
-          echo ${{ steps.project-version.outputs.current-version}}
+          ${{ steps.node-version.outputs.version }} \n
+          ${{ steps.node-version.outputs.major }} \n
+          ${{ steps.node-version.outputs.minor }} \n
+          ${{ steps.node-version.outputs.patch }} \n
+          ${{ steps.project-version.outputs.current-version}}
