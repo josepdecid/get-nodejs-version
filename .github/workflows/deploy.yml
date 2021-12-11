@@ -40,5 +40,5 @@ jobs:
         with:
           title: 'Testing auto-deploy build'
           repo_token: '${{ secrets.DEPLOY_GITHUB_TOKEN }}'
-          automatic_release_tag: '${{ steps.project-version.outputs.version }}'
+          automatic_release_tag: v'${{ steps.project-version.outputs.version }}'
           prerelease: true
