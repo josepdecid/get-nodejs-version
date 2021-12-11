@@ -1,4 +1,3 @@
-import { readPackageJson } from './input_reader';
-import { writeOutput } from './output_writer';
+import { readPackageJson, writeOutput } from './io_helpers';
 
 export { readPackageJson, writeOutput };

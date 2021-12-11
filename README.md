@@ -1,24 +1,23 @@
 <p align="center">
-  <img src="icon.png" width=100>
+  <img src="icon.png" width=150>
 </p>
 
 # Get NodeJS version - GitHub Action
 
-![release](https://img.shields.io/github/v/release/josepdecid/get-nodejs-version-action?style=for-the-badge)
+![release](https://img.shields.io/github/v/release/josepdecid/get-nodejs-version?style=for-the-badge)
+![license](https://img.shields.io/github/license/josepdecid/get-nodejs-version?style=for-the-badge)
 
-![license](https://img.shields.io/github/license/josepdecid/get-nodejs-version-action?style=for-the-badge)
+![open issues](https://img.shields.io/github/issues-raw/josepdecid/get-nodejs-version?style=for-the-badge)
+![closed issues](https://img.shields.io/github/issues-closed-raw/josepdecid/get-nodejs-version?style=for-the-badge)
 
 This repository implements a GitHub action to retrieve the NodeJS version from the `package.json` file. According to the [properties specification](https://docs.npmjs.com/cli/v8/configuring-npm/package-json#engines), you can specify the version of node that your project works on
 with the `engines > node` property in `package.json`:
 
 ```json
 {
-  ...
   "engines": {
-    "node": "16.13.0",
-    ...
-  },
-  ...
+    "node": "16.13.0"
+  }
 }
 ```
 
@@ -37,7 +36,7 @@ You can add this action step in the steps definition of any workflow file in `.g
   uses: actions/checkout@v2
 
 - name: Read node from package.json
-  uses: josepdecid/get-nodejs-version-action@<VERSION>
+  uses: josepdecid/get-nodejs-version@<VERSION>
   id: get-node-version
 ```
 
@@ -54,12 +53,12 @@ In the following example, we can see how to use the extracted version to set up 
 
 ## Contribute
 
-You can contribute to improve this project by adding new features or fixing some bugs.
+You can contribute and improve this project by reporting any issues or bugs in the [Issues tab](https://github.com/josepdecid/get-nodejs-version/issues). However, you can also do that by adding new features or expanding already existing ones.
 
-### Guidelines:
+### Contribution guidelines:
 
 TODO: **Coming soon...**
 
 ## License
 
-[MIT](https://github.com/josepdecid/get-nodejs-version-action/blob/main/LICENSE)
+[MIT](https://github.com/josepdecid/get-nodejs-version/blob/main/LICENSE)
