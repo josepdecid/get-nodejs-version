@@ -1,7 +1,8 @@
-import { debug, getInput, setFailed } from '@actions/core';
+import { join } from 'path';
 import { existsSync, readFileSync } from 'fs';
 import { PackageJson } from 'package-json-type';
-import { join } from 'path';
+import { NodeVersion } from 'version_information';
+import { debug, getInput, setFailed, setOutput } from '@actions/core';
 
 export function readPackageJson(): PackageJson {
   const path = getInput('path');
@@ -16,11 +17,18 @@ export function readPackageJson(): PackageJson {
   let packageJson;
   try {
     const packageJsonRaw = readFileSync(packagePath).toString();
-
     packageJson = JSON.parse(packageJsonRaw);
   } catch (error: any) {
     setFailed(error.message);
   }
 
   return packageJson;
+}
+
+export function writeOutput(information: NodeVersion) {
+  for (const [key, value] of Object.entries(information)) {
+    if (value !== null) {
+      setOutput(key, value);
+    }
+  }
 }

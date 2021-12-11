@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from '@jest/globals';
-import extractVersionInformation from './version_extraction';
+import { extractVersionInformation } from '.';
 
 describe('When extracting the information from a explicit version', () => {
   const rawVersion = '17.18.9';

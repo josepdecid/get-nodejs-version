@@ -1,3 +1,3 @@
-import extractVersionInformation from './version_extraction';
+import { extractVersionInformation } from './version_extraction';
 
 export { extractVersionInformation };

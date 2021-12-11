@@ -2,7 +2,7 @@ import { debug } from '@actions/core';
 import { PackageJson } from 'package-json-type';
 import { NodeVersion } from 'version_information';
 
-const extractVersionInformation = (json: PackageJson): NodeVersion => {
+export const extractVersionInformation = (json: PackageJson): NodeVersion => {
   const version = json.engines.node;
   debug(`NodeJS version from package.json[engines.node]: ${version}`);
 
@@ -16,5 +16,3 @@ const extractVersionInformation = (json: PackageJson): NodeVersion => {
     patch: parseInt(subVersions[2])
   };
 };
-
-export default extractVersionInformation;
