@@ -3,8 +3,7 @@ import { existsSync, readFileSync } from 'fs';
 import { PackageJson } from 'package-json-type';
 import { join } from 'path';
 
-// TODO: Temp fix, set type safe for the representation of the package.json
-function readPackageJson(): PackageJson {
+export function readPackageJson(): PackageJson {
   const path = getInput('path');
   const packagePath = join(path, 'package.json');
 
@@ -25,5 +24,3 @@ function readPackageJson(): PackageJson {
 
   return packageJson;
 }
-
-export default readPackageJson;

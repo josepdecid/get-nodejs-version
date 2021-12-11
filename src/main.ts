@@ -1,5 +1,4 @@
-import readPackageJson from './input_reader/input_reader';
-import { writeOutput } from './output_writer';
+import { readPackageJson, writeOutput } from './io_helpers';
 import { extractVersionInformation } from './version_extraction';
 
 const run = (): void => {

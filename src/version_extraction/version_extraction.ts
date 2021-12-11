@@ -1,13 +1,10 @@
 import { debug } from '@actions/core';
 import { PackageJson } from 'package-json-type';
-import { VersionInformation } from 'version_information';
+import { NodeVersion } from 'version_information';
 
-const extractVersionInformation = (
-  packageJson: PackageJson
-): VersionInformation => {
-  const version = packageJson.engines.node;
-
-  debug(`Node version from package.engines.node: ${version}`);
+const extractVersionInformation = (json: PackageJson): NodeVersion => {
+  const version = json.engines.node;
+  debug(`NodeJS version from package.json[engines.node]: ${version}`);
 
   const subVersions = version.split('.');
 
