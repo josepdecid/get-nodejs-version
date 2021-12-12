@@ -1,7 +1,7 @@
 {
   "name": "get-nodejs-version-action",
   "description": "GitHub action to retrieve the NodeJS version as defined in `package.json` > `engines` > `node`",
-  "version": "1.0.0",
+  "version": "1.1.0-rc",
   "engines": {
     "node": "16.13.0"
   },
